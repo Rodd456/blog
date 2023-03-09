@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Blog Post</title>
+</head>
+<body>
+    <main class="single-post-main">
+        <h1>{{postData.title}}</h1>
+        <h2>Author: {{postData.author}}</h2>
+        <div>{{postData.date_created}}</div>
+        
+        <div class="break-2"></div>
+        <div class="single-bod">{{postData.body}}</div>
+        <div class="break-2"></div>
+        
+        <section class="comments">
+            <h1>Comments</h1>
+            {{#each postData.reviews as |review|}}
+                <div class="comment-output">
+                    <div>User: {{review.user_id}}</div>
+                    <div class="comment">
+                        {{review.body}}
+                    </div>
+                </div>
+            {{/each}}
+        </section>
+
+        {{#if logged_in}}
+            <form class="review-form">
+                <h1>Leave a Comment</h1>
+                <textarea id="review-bod" rows="5"></textarea>
+                <button type="submit">Submit</button>
+            </form>
+        {{/if}}
+
+        <div class="hidden-id">{{postData.id}}</div>
+    </main>
+
+    <script>
+        const form = document.querySelector('.review-form')
+        form.addEventListener('submit', (e) => {
+            e.preventDefault()
+            console.log("works")
+            const body = document.querySelector('#review-bod').value
+            const id = document.querySelector('.hidden-id').textContent
+            const content = {
+                body: body,
+                post_id: parseInt(id)
+            }
+            console.log(content)
+            fetch("/post/reviews/new", {
+                method: 'POST',
+                body: JSON.stringify(content),
+                headers: { 'Content-Type': 'application/json' },
+            }).then(res => {
+                if (res.ok) {
+                    console.log(res)
+                    document.location.reload();
+                } else {
+                    console.log(response.statusText);
+                }
+            })
+        })
+    </script>
+</body>
+</html>

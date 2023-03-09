@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/style.css">
+    <title>Tech Blog</title>
+</head>
+<body>
+    <nav>
+        <div class="anchor-div">
+            <a href="/">Home</a>
+            {{#if logged_in}}
+            <a href="/dashboard">Dashboard</a>
+            <a id="logout-btn">Logout</a>
+            {{else}}
+            <a href="/user">Login</a>
+            {{/if}}
+        </div>
+        <h1>The Tech Blog</h1>
+    </nav>
+    {{{body}}}
+
+    <script defer>
+        const logoutBtn = document.querySelector('#logout-btn');
+        if (logoutBtn) {
+            logoutBtn.addEventListener("click", () => {
+                fetch("/user/logout", {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                }).then(res => {
+                    if (res.ok) {
+                        location.replace('/');
+                    } else {
+                        console.log(res.statusText);
+                    }
+                }).catch(error => {
+                    console.error(error);
+                });
+            });
+        }
+   </script>
+</body>
+</html>

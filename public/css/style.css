@@ -1,0 +1,239 @@
+:root {
+    --blue-900: #001d3d;
+    --blue-700: #003566;
+}
+body {
+    margin: 0;
+    padding: 0;
+    background-color: var(--blue-900);
+}
+nav {
+    background-color: var(--blue-700);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    width: 100%;
+}
+.anchor-div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    padding: 1rem;
+    padding-bottom: 0;
+}
+.anchor-div a {
+    text-decoration: none;
+    color: white;
+    font-size: 1.5em;
+    cursor: pointer;
+}
+nav h1 {
+    color: white;
+    background-color: var(--blue-900);
+    padding: 1rem;
+    margin-left: 2rem;
+    font-size: 2em;
+    border-radius: 1rem;
+    box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+}
+.login-main {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+}
+.form-section {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+}
+.form-section form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-end;
+    gap: .25rem;
+}
+.form-section h2 {
+    width: 100%;
+    text-align: center;
+    color: white;
+}
+.form-section button {
+    width: 100%;
+    text-align: center;
+    color: white;
+    background-color: var(--blue-700);
+    border: none;
+    padding: .5rem 0;
+    margin-top: .5rem;
+    cursor: pointer;
+}
+.form-section div span {
+ color: white;
+}
+.home-main {
+    width: 75%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 1rem;
+    margin-left: 2rem;
+    gap: 1rem;
+}
+.home-main a {
+    border: 2px var(--blue-700) solid;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    box-shadow: var(--blue-700) 0px 3px 8px;
+    width: 100%;
+    text-decoration: none;
+    color: white;
+}
+.home-main h2 {
+    text-transform: capitalize;
+}
+.single-post-main {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 1rem;
+    color: white;
+    
+}
+.single-post-main h1 {
+    text-transform: capitalize;
+    font-size: 2.5em;
+}
+.single-bod {
+    margin-top: 1rem;
+    font-size: 1.75em;
+}
+.break-2 {
+    width: 85%;
+    height: 5px;
+    background-color: var(--blue-700);
+    margin: 1rem 0;
+}
+.break {
+    width: 5px;
+    height: 400px;
+    background-color: var(--blue-700);
+    margin: 1rem 1rem ;
+}
+.display-posts {
+    width: 45%;
+    max-height: 500px;
+    overflow-y: scroll;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    justify-content: flex-start;
+    align-items: center;
+   
+    margin-left: 1rem;
+}
+.display-posts a {
+    margin-top: .25rem;
+    border: 2px var(--blue-700) solid;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    box-shadow: var(--blue-700) 0px 3px 8px;
+    width: 90%;
+    text-decoration: none;
+    color: white;
+}
+.display-posts h2 {
+    text-transform: capitalize;
+}
+.new-post {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.new-post h1 {
+    color: white;
+    font-size: 2.5em;
+    text-decoration: underline;
+}
+.new-post input {
+    width: 100%;
+}
+.new-post textarea {
+    width: 100%;
+    max-width: 400px;
+}
+.new-post-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.new-post-form div {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.new-post-form span {
+    color: white;
+    font-size: 1.5em;
+    text-transform: capitalize;
+}
+.dash-main {
+    display: flex;
+    width: 100%;
+    justify-content: space-around;
+    align-items: center;
+}
+.review-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+}
+.hidden-id {
+    display: none;
+}
+.comments {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    gap: 1rem;
+}
+.comment-output {
+    border: 2px solid var(--blue-700);
+    padding: 2rem;
+    width: 85%;
+}
+@media (max-width: 650px) {
+    .dash-main {
+        flex-direction: column;
+    }
+    .break {
+        width: 85%;
+    height: 5px;
+    background-color: var(--blue-700);
+    margin: 1rem 1rem ;
+    }
+    .display-posts {
+        width: 100%;
+        margin-left: 0;
+    }
+}

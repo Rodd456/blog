@@ -1,0 +1,60 @@
+<main class="login-main">
+  <section class="form-section">
+    <form class="log-in-form">
+      <h2>Login</h2>
+      <div>
+        <label for="login-user">User Name:</label>
+        <input id="login-user" type="text">
+      </div>
+      <div>
+        <label for="login-password">Password:</label>
+        <input id="login-password" type="password">
+      </div>
+      <button type="submit">Submit</button>
+    </form>
+    <form class="create-form">
+      <h2>Create Account</h2>
+      <div>
+        <label for="create-user">User Name:</label>
+        <input id="create-user" type="text">
+      </div>
+      <div>
+        <label for="create-password">Password:</label>
+        <input id="create-password" type="password">
+      </div>
+      <button type="submit">Submit</button>
+    </form>
+  </section>
+</main>
+
+<script>
+  const loginForm = document.querySelector('.log-in-form')
+  const createForm = document.querySelector('.create-form')
+
+  function handleFormSubmit(e) {
+    e.preventDefault()
+    const user = this.querySelector('input[type="text"]').value
+    const password = this.querySelector('input[type="password"]').value
+    const userPass = {
+      user_name: user,
+      password: password
+    }
+    console.log(userPass)
+    const url = this.classList.contains('log-in-form') ? '/user/login' : '/user/create'
+    fetch(url, {
+      method: 'POST',
+      body: JSON.stringify(userPass),
+      headers: { 'Content-Type': 'application/json' },
+    }).then(res => {
+      if (res.ok) {
+        console.log(res)
+        document.location.replace('/');
+      } else {
+        console.log(res.statusText);
+      }
+    })
+  }
+
+  loginForm.addEventListener('submit', handleFormSubmit)
+  createForm.addEventListener('submit', handleFormSubmit)
+</script>

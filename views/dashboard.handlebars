@@ -1,0 +1,58 @@
+<main class="dash-main">
+    <section class="display-posts">
+        {{#each postData as |data|}}
+            <a href="/post/posts/{{data.id}}" class="post-card">
+                <h2>{{data.title}}</h2>
+                <span>{{data.date_created}}</span>
+            </a>
+        {{/each}}
+    </section>
+    <div class="break"></div>
+    <section class="new-post">
+        <h1>New Post</h1>
+        <form class="new-post-form">
+            <div>
+                <label for="title-inp">Title</label>
+                <input id="title-inp" type="text" required>
+            </div>
+            <div>
+                <label for="date-inp">Date created (YYYY-MM-DD)</label>
+                <input id="date-inp" type="text" required>
+            </div>
+            <div>
+                <label for="body-inp">Body</label>
+                <textarea id="body-inp" rows="7" required></textarea>
+            </div>
+            <button type="submit">Add Post</button>
+        </form>
+    </section>
+</main>
+<script>
+    const form = document.querySelector('.new-post-form')
+    form.addEventListener('submit', async (e) => {
+        e.preventDefault()
+        const title = document.querySelector('#title-inp').value
+        const body = document.querySelector('#body-inp').value
+        const date = document.querySelector('#date-inp').value
+        const content = {
+            title,
+            body,
+            date_created: date
+        }
+        try {
+            const res = await fetch("/post/posts/create", {
+                method: 'POST',
+                body: JSON.stringify(content),
+                headers: { 'Content-Type': 'application/json' },
+            })
+            if (res.ok) {
+                console.log(res)
+                document.location.reload();
+            } else {
+                console.log(response.statusText);
+            }
+        } catch (error) {
+            console.log(error)
+        }
+    })
+</script>
